@@ -1,5 +1,5 @@
-# Тема 5. Базовые коллекции: множества, списки
-Отчет по Теме #5 выполнил(а):
+# Тема 7. Работа с файлами (ввод, вывод)
+Отчет по Теме #7 выполнил(а):
 - Малачевский Вячеслав Евгеньевич
 - ИВТ-23-2
 
@@ -22,526 +22,610 @@
 - к.э.н., доцент Панов М.А.
 
 ## Лабораторная работа №1
-### ⦁	Друзья предложили вам поиграть в игру “найди отличия и убери повторения (версия для программистов)”. Суть игры состоит в том, что на вход программы поступает два множества, а ваша задача вывести все элементы первого, которых нет во втором. А вы как раз недавно прошли множества и знаете их возможности, поэтому это не составит для вас труда.
+### ⦁	Составьте текстовый файл и положите его в одну директорию с программой на Python. Текстовый файл должен состоять минимум из двух строк.
 
 
 ```python
-set_1 = {'White','Black','Red','Pink'} 
-set_2 = {'Red','Green','Blue','Red'} 
-print(set_1 - set_2)  
+file = open("file.txt", "a")
+file.write("Hello World!\n")
+file.write("Tema7_Lab1")
+file.close()  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab51.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Laba1.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает два множества:
+В данном коде составлен текстовый файл:
 
-1. `set_1 = {'White','Black','Red','Pink'}`: Первое множество White, Black, Red, Pink.
+1. `file = open("file.txt", "a")`: Открыли текстовый файл.
 
-2. `set_2 = {'Red','Green','Blue','Red'}`: Второе множество Red, Green, Blue, Red.
+2. `file.write("Hello World!\n")
+file.write("Tema7_Lab1")`: Записали два предложения в файл.
 
-3. `print(set_1 - set_2)`: Возвращает разность множеств, которые есть в set_1, но отсутствуют в set_2.
+3. `file.close()`: Закрыли файл.
 
 ## Лабораторная работа №2
-### ⦁	Напишите две одинаковые программы, только одна будет использовать set(), а вторая frozenset() и попробуйте к исходному множеству добавить несколько элементов, например, через цикл.
+### ⦁ Напишите программу, которая выведет только первую строку из вашего файла, при этом используйте конструкцию open()/close().
 
 
 ```python
-a = set('abcdefg')
-print(a)
-for i in range(1, 5):
-    a.add(i)
-    print(a)   
+file = open("file.txt", "r")
+print(file.readline())
+file.close()   
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab52.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab2.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает множество:
+В данном коде идет работа с текстовым файлом:
 
-1. `a = set('abcdefg')`: Множество символов 'abcdefg'.
+1. `file = open("file.txt", "r")`: Открыли файл в режиме чтения.
 
-2. `print(a)`: Выводит множество символов.
+2. `print(file.readline())`: Вывели первую строку файла.
 
-3. `for i in range(1, 5):
-    a.add(i)
-    print(a)`: На каждой итерации цикла добавляет число от 1 до 4 и выводит множество символов.
+3. `file.close()`: Закрыли файл.
 
 ## Лабораторная работа №3
-### ⦁ На вход в программу поступает список (минимальной длиной 2 символа). Напишите программу, которая будет менять первый и последний элемент списка.
+### ⦁ Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию open()/close().
 
 
 ```python
-def replace(input_list):
-    memory=input_list[0]
-    input_list[0] = input_list[-1]
-    input_list[-1] = memory
-    return input_list
-print(replace([1,2,3,4,5]))   
+file = open("file.txt", "r")
+print(file.readlines())
+file.close()   
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab53.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab3.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает параметр input_list:
+В данном коде идет работа с текстовым файлом:
 
-1. `memory=input_list[0]`: Сохраняет первый элемент в переменную memory.
+1. `file = open("file.txt", "r")`: Открыли файл в режиме чтения.
 
-2. `input_list[0] = input_list[-1]`: Заменяет первый элемент на последний.
+2. `print(file.readlines())`: Вывели все строки файла.
 
-3. `input_list[-1] = memory`: Заменяет последний элемент на сохраненное значение.
-
-4. `return input_list
-print(replace([1,2,3,4,5]))`: Первый и последний элементы списка поменялись местами. Выводит элементы.
+3. `file.close()`: Закрыли файл.
   
 ## Лабораторная работа №4
-### ⦁ На вход в программу поступает список (минимальной длиной 10 символов). Напишите программу, которая выводит элементы с индексами от 2 до 6. В программе необходимо использовать “срез”.
+### ⦁ Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию with open().
 
 
 ```python
-a= [12, 54, 32, 57, 843, 2346, 765, 75, 25, 234, 756, 23]
-print(a[2:6])   
+with open("file.txt") as f:
+    print(f.readlines())  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab54.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab4.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает список: 
+В данном коде идет работа с текстовым файлом:
 
-1. `a= [12, 54, 32, 57, 843, 2346, 765, 75, 25, 234, 756, 23]`: Список из 10 символов.
+1. `with open("file.txt") as f:`: Открыли текстовый файл.
 
-2. `print(a[2:6])`: Выводит элементы с индексами 2, 3, 4, 5.
+2. `print(f.readlines())`: Вывели все строки файла в массиве.
 
 ## Лабораторная работа №5
-### ⦁ Иван задумался о поиске «бесполезного» числа, полученного из списка. Суть поиска в следующем: он берет произвольный список чисел, находит самое большое из них, а затем делит его на длину списка. Студент пока не придумал, где может пригодиться подобное значение, но ищет у вас помощи в реализации такой функции useless().
+### ⦁ Напишите программу, которая выведет каждую строку из вашего файла отдельно, при этом используйте конструкцию with open().
 
 
 ```python
-def useless(lst):
-    return max(lst) / len(lst)
-print(useless([3, 5, 7, 3, 33]))
-print(useless([-12.5, 54, 77.3, 0, -36, 98.2, -63, 21.7, 47, -89.6]))
-print(useless([-25.8, 86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]))   
+with open("file.txt") as f:
+    for line in f:
+        print(line)  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab55.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab5.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает произвольный список чисел:
+В данном коде идет работа с текстовым файлом:
 
-1. `print(useless([3, 5, 7, 3, 33]))`: Функция useless делим максимальный элемент списка на длину этого списка. Выводит результат.
+1. `with open("file.txt") as f:`: Открыли текстовый файл.
 
-2. `print(useless([-12.5, 54, 77.3, 0, -36, 98.2, -63, 21.7, 47, -89.6]))`: Функция useless делим максимальный элемент списка на длину этого списка. Выводит результат.
-
-3. `print(useless([-25.8, 86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]))`: Функция useless делим максимальный элемент списка на длину этого списка. Выводит результат.
+2. `for line in f:
+        print(line)  `: Выводим каждую строку файла отдельно.
 
 ## Лабораторная работа №6
-### ⦁	Ребята не могут определится каким супергероем они хотят стать. У них есть случайно составленный список супергероев, и вы должны определить кто из ребят будет каким супергероем. Необходимо использовать разделение списков.
+### ⦁ Напишите программу, которая будет добавлять новую строку в ваш файл, а потом выведет полученный файл в консоль. Вывод можно осуществлять любым способом. Обязательно проверьте сам файл, чтобы изменения в нем тоже отображались.
 
 
 ```python
-superheroes = ['superman', 'spiderman', 'batman']
-nikolay, vasiliy, ivan = superheroes
-print('Николай -', nikolay)
-print('Василий - ', vasiliy)
-print('Иван - ', ivan)   
+with open("file.txt", 'a+') as f:
+    f.write('\nIm additional line')
+
+with open("file.txt", 'r') as f:
+    result = f.readlines()
+    print(result)   
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab56.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab6.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает случайно составленный список супергероев:
+В данном коде идет работа с текстовым файлом:
 
-1. `superheroes = ['superman', 'spiderman', 'batman']`: Создан список.
+1. `with open("file.txt", 'a+') as f:`: Открыли файл.
 
-2. `nikolay, vasiliy, ivan = superheroes`: nikolay, vasiliy, ivan присваивают себе элементы в списке superheroes.
+2. `f.write('\nIm additional line')`: Добавили новую строку.
 
-3. `print('Николай -', nikolay)
-print('Василий - ', vasiliy)
-print('Иван - ', ivan)`: Выводится результат.
+3. `with open("file.txt", 'r') as f:
+    result = f.readlines()
+    print(result)`: Вывели полученный файл в консоль.
 
 ## Лабораторная работа №7
-### ⦁	Вовочка, насмотревшись передачи “Слабое звено” решил написать программу, которая также будет находить самое слабое звено (минимальный элемент) и удалять его, только делать он это хочет не с людьми, а со списком. Помогите Вовочке с реализацией программы. Подсказка: для этого вам необходимо отсортировать список и удалить значение при помощи pop().
+### ⦁	Напишите программу, которая перепишет всю информацию, которая была у вас в файле до этого, например напишет любые данные из произвольно вами составленного списка. Также не забудьте проверить что измененная вами информация сохранилась в файле.
 
 
 ```python
-a = [-25.8,86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]
-a.sort()
-print('Отсортированный список:\n', a)
-a.pop(0)
-print('Отсортированный список без наименьшего элемента:\n', a)  
+lines = ['one', 'two', 'three']
+with open('file.txt', 'w') as f:
+    for line in lines:
+        f.write('\nCycle run ' + line)
+    print('Done! ') 
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab57.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab7.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает список:
+В данном коде идет работа с текстовым файлом:
 
-1. `a = [-25.8,86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]`: Создан список.
+1. `lines = ['one', 'two', 'three']`: Создан список строк.
 
-2. `a.sort()`: сортирует список по возрастанию.
+2. `with open('file.txt', 'w') as f:`: Открыли файл для записи.
 
-3. `a.pop(0)`: Удаляет элемент с индексом 0.
+3. `for line in lines:`: Цикл по всем элементам списка.
 
-4. `print('Отсортированный список без наименьшего элемента:\n', a) `: Выводится отсортированный список.
+4. ` f.write('\nCycle run ' + line)
+    print('Done! ') `: Записывается строка и выводится.
 
 ## Лабораторная работа №8
-### ⦁	Михаил решил создать большой n-мерный список, для этого он случайным образом создал несколько списков, состоящих минимум из 3, а максимум из 10 элементов и поместил их в один большой список. Он также как и Иван не знает зачем ему это сейчас нужно, но надеется на то, что это пригодится ему в будущем.
+### ⦁	Выберите любую папку на своем компьютере, имеющую вложенные директории. Выведите на печать в терминал ее содержимое, как и всех подкаталогов при помощи функции print_docs(directory).
 
 
 ```python
-from random import randint
-def list_maker():
-    a = [randint(1, 100)] * randint(3, 10)
-    return a
-if __name__ == '__main__':
-    result = []
-    for i in range(randint(1, 5)):
-        result.append(list_maker())
-        print(result)   
+import os
+
+def print_docs(directory):
+    all_files = os.walk(directory)
+    for catalog in all_files:
+        print(f'Папка {catalog[0]} содержит:')
+    print(f'Директории: {", ".join([folder for folder in catalog[1]])}')
+    print(f'Файлы: {", ".join([file for file in catalog[2]])}')
+    print('-' * 40)
+
+print_docs('C:\\Users\\New\PycharmProjects\pythonProject1')  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab58.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab8.png)
 
 ## Выводы
 
-В данном коде на вход программы поступает несколько списков:
+В данном коде идет работа с папками, имебщими вложенные директории:
 
-1. `def list_maker():
-    a = [randint(1, 100)] * randint(3, 10)`: Создан список, состоящий из случайного числа от 3 до 10, где все элементы одинаковые. Случайное число от 1 до 100.
+1. `def print_docs(directory):`: На каждой итерации возвращает кортеж.
 
-2. `for i in range(randint(1, 5)):`: Выполняется цикл от 1 до 5 раз.
+2. `all_files = os.walk(directory)`: Цикл по всем элементам
 
-3. `result.append(list_maker())`: На каждой итерации создается новый список result.
+3. `for catalog in all_files:`: Выводит путь к текущей папке
 
-4. `print(result)`: Выводится текущее состояние result.
+4. `print(f'Папка {catalog[0]} содержит:')
+    print(f'Директории: {", ".join([folder for folder in catalog[1]])}')
+    print(f'Файлы: {", ".join([file for file in catalog[2]])}')
+    print('-' * 40)
+
+print_docs('C:\\Users\\New\PycharmProjects\pythonProject1')`: Выводится список папок и подпапок, их имена, вызываем функцию для указания пути.
 
 ## Лабораторная работа №9
-### ⦁	Вы работаете в ресторане и отвечает за статистику покупок, ваша задача сравнить между собой заказы покупателей, которые указаны в разном порядке. Реализуйте функцию superset(), которая принимает 2 множества. Результат работы функции: вывод в консоль одного из сообщений в зависимости от ситуации:⦁	- «Супермножество не обнаружено»⦁	– «Объект {X} является чистым супермножеством»⦁	– «Множества равны»
+### ⦁	Требуется реализовать функцию, которая выводит слово, имеющее максимальную длину (или список слов, если таковых несколько). Проверьте работоспособность программы на своем наборе данных.
 
 
 ```python
-def superset(set_1, set_2):
-    if set_1 > set_2:
-        print(f'Объект {set_1} является чистым супермножеством')
-    elif set_1 == set_2:
-        print(f'Множества равны')
-    elif set_1 < set_2:
-        print(f'Объект {set_2} является чистым супермножеством')
-    else:
-        print('Супермножество не обнаружено')
+def longest_words(file):
+    with open(file, encoding='utf-8') as f:
+        words = f.read().split()
+        max_length = len(max(words, key=len))
+        for word in words:
+            if len(word) == max_length:
+                sought_words = word
 
-if __name__ == '__main__':
-    superset({1, 8, 3, 5}, {3, 5})
-    superset({1, 8, 3, 5}, {5, 3, 8, 1})
-    superset({3, 5}, {5, 3, 8, 1})
-    superset({90, 100}, {3, 5})   
+        if len(sought_words) == 1:
+            return sought_words[0]
+        return sought_words
+
+print(longest_words('input.txt'))  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab59.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab9.png)
 
 ## Выводы
 
-В данном коде на вход программы принимается два множества:
+В данном коде идет работа с функцией и текстовым файлом:
 
-1. `def superset(set_1, set_2)`: Два множества set_1, set_2
+1. `def longest_words(file):
+    with open(file, encoding='utf-8') as f:`: Открытие файла для чтения
 
-2. `superset({1, 8, 3, 5}, {3, 5})`: Первой вызов. set_1 имеет все элементы set_2 плюс дополнительные. 
+2. `max_length = len(max(words, key=len))`: Находим максимальную длину среди слова
 
-3. `superset({1, 8, 3, 5}, {5, 3, 8, 1})`: Второй вызов. Множества идентичны, порядок не имеет значения.
+3. `for word in words:
+            if len(word) == max_length:
+                sought_words = word
 
-4. `superset({3, 5}, {5, 3, 8, 1})`: Третий вызов. set_2 имеет все элементы set_1 плюс дополнительные.
+        if len(sought_words) == 1:
+            return sought_words[0]
+        return sought_words`: Создаем список и проходим по всем словам
 
-5. `superset({90, 100}, {3, 5})`: Четвертый вызов. Множества не равны, не пересекаются.
+4. `print(longest_words('input.txt'))`: Вызываем функцию и выводим результат.
 
 ## Лабораторная работа №10
-### ⦁	Предположим, что вам нужно разобрать стопку бумаг, но нужно начать работу с нижней, “переверните стопку”. Вам дан произвольный список. Представьте его в обратном порядке. Программа должна занимать не более двух строк в редакторе кода.
+### ⦁	Требуется создать csv-файл «rows_300.csv» со следующими столбцами:№ - номер по порядку (от 1 до 300); Секунда – текущая секунда на вашем ПК; Микросекунда – текущая миллисекунда на часах Для наглядности на каждой итерации цикла искусственно приостанавливайте скрипт на 0,01 секунды.
 
 
 ```python
-my_list = [2, 5, 8, 3]
-print(my_list[::-1])   
+import csv
+import datetime
+import  time
+with open('rows_300.csv', 'w', encoding='utf-8', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['№', 'Секунда', 'Микросекунда'])
+    for line in range(1, 301):
+        writer.writerow([line, datetime.datetime.now().second,
+                         datetime.datetime.now().microsecond])
+        time.sleep(0.01)  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Lab510.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Lab10.png)
 
 ## Выводы
 
-В данном коде на вход программы принимается произвольный список:
+В данном коде идет работа с csv-файлом:
 
-1. `my_list = [2, 5, 8, 3]`: Произвольный список 2, 5, 8, 3.
+1. `with open('rows_300.csv', 'w', encoding='utf-8', newline='') as f:`: Открываем файл для записи.
 
-2. `print(my_list[::-1]) `: Берет список, начиная с конца и двигается к началу. Собирает элементы в обратном порядке и выводит. 
+2. `writer = csv.writer(f)
+    writer.writerow(['№', 'Секунда', 'Микросекунда'])`: Создаем объект и записываем заголовки.
+   
+3. `for line in range(1, 301):
+        writer.writerow([line, datetime.datetime.now().second,
+                         datetime.datetime.now().microsecond])
+        time.sleep(0.01)`: Цикл от 1 до 300 с записью данных и с созданием задержки.
 
 ## Самостоятельная работа №1
-### ⦁	Ресторан на предприятии ведет учет посещений за неделю при помощи кода работника. У них есть список со всеми посещениями за неделю. Ваша задача почитать: Сколько было выдано чеков Сколько разных людей посетило ресторан Какой работник посетил ресторан больше всех раз Список выданных чеков за неделю: [8734, 2345, 8201, 6621, 9999, 1234, 5678, 8201, 8888, 4321, 3365, 1478, 9865, 5555, 7777, 9998, 1111, 2222, 3333, 4444, 5556, 6666, 5410, 7778, 8889, 4445, 1439, 9604, 8201, 3365, 7502, 3016, 4928, 5837, 8201, 2643, 5017, 9682, 8530, 3250, 7193, 9051, 4506, 1987, 3365, 5410, 7168, 7777, 9865, 5678, 8201, 4445, 3016, 4506, 4506] Результатом выполнения задачи будет: листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
+### ⦁	Найдите в интернете любую статью (объем статьи не менее 200 слов), скопируйте ее содержимое в файл и напишите программу, которая считает количество слов в текстовом файле и определит самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
 
 
 ```python
-checks = [8734, 2345, 8201, 6621, 9999, 1234, 5678, 8201, 8888, 4321, 3365,
-          1478, 9865, 5555, 7777, 9998, 1111, 2222, 3333, 4444, 5556, 6666,
-          5410, 7778, 8889, 4445, 1439, 9604, 8201, 3365, 7502, 3016, 4928,
-          5837, 8201, 2643, 5017, 9682, 8530, 3250, 7193, 9051, 4506, 1987,
-          3365, 5410, 7168, 7777, 9865, 5678, 8201, 4445, 3016, 4506, 4506]
+def analyze_text_simple(filename):
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            text = file.read()
 
-total_checks = len(checks)
+        words = text.split()
 
-unique_people = len(set(checks))
+        cleaned_words = []
+        punctuation = '.,!?;:()—–-""«»'
 
-from collections import Counter
+        for word in words:
+            clean_word = word.strip(punctuation)
+            if clean_word:
+                cleaned_words.append(clean_word.lower())
 
-visits_count = Counter(checks)
-most_frequent_worker, most_visits = visits_count.most_common(1)[0]
+        total_words = len(cleaned_words)
+        word_count = {}
+        for word in cleaned_words:
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
 
-print(f"Всего было выдано чеков: {total_checks}")
-print(f"Разных людей посетило ресторан: {unique_people}")
-print(f"Работник с кодом {most_frequent_worker} посетил ресторан чаще всех - {most_visits} раз")
-print()  
+        most_common_word = ""
+        max_count = 0
+        for word, count in word_count.items():
+            if count > max_count:
+                max_count = count
+                most_common_word = word
+
+        print(f"Общее количество слов: {total_words}")
+        print(f"Самое частое слово: '{most_common_word}' (встречается {max_count} раз)")
+
+        return total_words, most_common_word, max_count
+
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
+        return None
+
+analyze_text_simple("Solo.txt") 
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Solo51.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Solo1.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Solo1(2).png)
 
 ## Выводы
 
-В данном коде на вход программы принимается список:
+В данном коде идет работа с текстовым файлом:
 
-1. `checks = [8734, 2345, 8201, 6621, 9999, 1234, 5678, 8201, 8888, 4321, 3365,
-          1478, 9865, 5555, 7777, 9998, 1111, 2222, 3333, 4444, 5556, 6666,
-          5410, 7778, 8889, 4445, 1439, 9604, 8201, 3365, 7502, 3016, 4928,
-          5837, 8201, 2643, 5017, 9682, 8530, 3250, 7193, 9051, 4506, 1987,
-          3365, 5410, 7168, 7777, 9865, 5678, 8201, 4445, 3016, 4506, 4506]`: Список выданных чеков.
+1. Открывает и читает весь текст
 
-2. `total_checks = len(checks)`: Общее количество чеков
+2. Разбивает на слова, удаляет пунктуацию, приводит к нижнему регистру
 
-3.  `unique_people = len(set(checks))`: Преобразование списка в множество.
+3. Считает общее количество слов и частоту каждого слова
 
-4.  `visits_count = Counter(checks)`: Найден работник, посетивший ресторан больше всех.
+4. Находит слово с наибольшей частотой
+
+5. Показывает общее количество слов и самое частое слово
   
 ## Самостоятельная работа №2
-### ⦁	На физкультуре студенты сдавали бег, у преподавателя физкультуры есть список всех результатов, ему нужно узнать Три лучшие результата Три худшие результата Все результаты начиная с 10 Ваша задача помочь ему в этом. Список результатов бега: [10.2, 14.8, 19.3, 22.7, 12.5, 33.1, 38.9, 21.6, 26.4, 17.1, 30.2, 35.7, 16.9, 27.8, 24.5, 16.3, 18.7, 31.9, 12.9, 37.4] Результатом выполнения задачи будет: листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
+### ⦁	У вас появилась потребность в ведении книги расходов, посмотрев все существующие варианты вы пришли к выводу что вас ничего не устраивает и нужно все делать самому. Напишите программу для учета расходов. Программа должна позволять вводить информацию о расходах, сохранять ее в файл и выводить существующие данные в консоль. Ввод информации происходит через консоль. Результатом выполнения задачи будет: скриншот файла с учетом расходов, листинг кода, и вывод в консоль, с демонстрацией работоспособности программы.
 
 
 ```python
-results = [10.2, 14.8, 19.3, 22.7, 12.5, 33.1, 38.9, 21.6, 26.4, 17.1, 30.2, 35.7, 16.9,
-           27.8, 24.5, 16.3, 18.7, 31.9, 12.9, 37.4]
+import json
+from datetime import datetime
 
-sorted_results = sorted(results)
-print("Три лучших результата:")
-best_results = sorted_results[:3]
-for i, result in enumerate(best_results, 1):
-    print(f"   {i} место: {result} сек")
+try:
+    with open("Solo72.txt", "r", encoding="utf-8") as f:
+        expenses = json.load(f)
+except:
+    expenses = []
 
-print()
-print("Три худших результата:")
-worst_results = sorted_results[-3:]
-for i, result in enumerate(reversed(worst_results), 1):
-    print(f"   {i} место с конца: {result} сек")
-print()
-print("3. Все результаты начиная с 10:")
-results_from_10 = [result for result in sorted_results if result >= 10]
-print(f"   Количество результатов от 10 сек и выше: {len(results_from_10)}")
-print(f"   Список: {results_from_10}")   
+while True:
+    print("\n1 - Добавить расход")
+    print("2 - Посмотреть расходы")
+    print("3 - Выход")
+
+    choice = input("> ")
+
+    if choice == "1":
+        cat = input("Категория: ")
+        summa = float(input("Сумма: "))
+        desc = input("Описание: ")
+
+        expenses.append({
+            "дата": datetime.now().strftime("%d.%m.%Y"),
+            "категория": cat,
+            "сумма": summa,
+            "описание": desc
+        })
+
+        with open("expenses.txt", "w", encoding="utf-8") as f:
+            json.dump(expenses, f, ensure_ascii=False, indent=2)
+
+    elif choice == "2":
+        for exp in expenses:
+            print(f"{exp['дата']} - {exp['категория']} - {exp['сумма']} руб. - {exp['описание']}")
+
+    elif choice == "3":
+        break   
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Solo52.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Solo2.png)
 
 ## Выводы
 
 В данном коде на вход программы принимается список результатов:
 
-1. `results = [10.2, 14.8, 19.3, 22.7, 12.5, 33.1, 38.9, 21.6, 26.4, 17.1, 30.2, 35.7, 16.9,
-           27.8, 24.5, 16.3, 18.7, 31.9, 12.9, 37.4]`: Список результатов.
+1. При запуске загружает существующие расходы из файла
 
-2. `sorted_results = sorted(results)
-print("Три лучших результата:")
-best_results = sorted_results[:3]
-for i, result in enumerate(best_results, 1):
-    print(f"   {i} место: {result} сек")`: Находим три лучших результата и их время. Выводим результат. 
+2. Запрашивает у пользователя данные и сохраняет в файл
 
-3. `print()
-print("Три худших результата:")
-worst_results = sorted_results[-3:]
-for i, result in enumerate(reversed(worst_results), 1):
-    print(f"   {i} место с конца: {result} сек")`: Находим три худших результата и их время. Выводим результат.
+3. Показывает все ранее введенные расходы
 
-4. `print()
-print("3. Все результаты начиная с 10:")
-results_from_10 = [result for result in sorted_results if result >= 10]
-print(f"   Количество результатов от 10 сек и выше: {len(results_from_10)}")
-print(f"   Список: {results_from_10}")   `: Находим все результаты после 10. Подсчитываем количество. Выводим результат.
+4. Все данные сохраняются в JSON файл
   
 ## Самостоятельная работа №3
-### ⦁	Преподаватель по математике придумал странную задачку. У вас есть три списка с элементами, каждый элемент которых – длина стороны треугольника, ваша задача найти площади двух треугольников, составленные из максимальных и минимальных элементов полученных списков. Результатом выполнения задачи будет: листинг кода, и вывод в консоль, в котором будут указаны два этих значения. Три списка:one = [12, 25, 3, 48, 71] two = [5, 18, 40, 62, 98] three = [4, 21, 37, 56, 84]
+### ⦁	Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв латинского алфавита; число слов; число строк.Текст в файле: Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex.Complex is better than complicated.Ожидаемый результат: Input file contains:108 letters 20 words 4 lines
 
  
 ```python
-import math
+with open('Solo73.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
 
-def triangle_area(a, b, c):
-    p = (a + b + c) / 2
-    return math.sqrt(p * (p - a) * (p - b) * (p - c))
+lines = text.splitlines()
+num_lines = len(lines)
 
-one = [12, 25, 3, 48, 71]
-two = [5, 18, 40, 62, 98]
-three = [4, 21, 37, 56, 84]
+words = text.split()
+num_words = len(words)
 
-min_triangle = [min(one), min(two), min(three)]
-area_min = triangle_area(*min_triangle)
+num_letters = 0
+for char in text:
+    if char.isalpha() and char.isascii():
+        num_letters += 1
 
-max_triangle = [max(one), max(two), max(three)]
-area_max = triangle_area(*max_triangle)
-
-print(f" Площадь треугольника из минимальных элементов: {area_min:.2f}")
-print(f" Площадь треугольника из максимальных элементов: {area_max:.2f}")   
+print("Input file contains:")
+print(f"{num_letters} letters")
+print(f"{num_words} words")
+print(f"{num_lines} lines") 
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Solo53.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Solo3.png)
 
 ## Выводы
 
-В данном коде на вход программы принимается три списка с элементами:
+В данном коде идет работа с текстовым файлом:
 
-1. `one = [12, 25, 3, 48, 71]
-two = [5, 18, 40, 62, 98]
-three = [4, 21, 37, 56, 84]`: Три списка с элементами.
+1. `with open('Solo73.txt', 'r', encoding='utf-8') as file:
+    text = file.read()`: Открываем файл и анализируем всё содержимое.
 
-2. `def triangle_area(a, b, c):
-    p = (a + b + c) / 2
-    return math.sqrt(p * (p - a) * (p - b) * (p - c))`: Формулы для вычисления полупериметра и площади.
+2. `lines = text.splitlines()
+num_lines = len(lines)`: Разбиваем текст на строки и подсчитываем их количество.
    
-3. `min_triangle = [min(one), min(two), min(three)]
-area_min = triangle_area(*min_triangle)`: Находим треугольник из минимальных элементов.
+3. `words = text.split()
+num_words = len(words)`: Разбиваем текст на слова, подсчитываем их количество.
 
-4. `max_triangle = [max(one), max(two), max(three)]
-area_max = triangle_area(*max_triangle)`: Находим треугольник из максимальных элементов.
+4. `num_letters = 0
+for char in text:
+    if char.isalpha() and char.isascii():
+        num_letters += 1`: Инициализируем счетчик букв, проходим по каждому слову.
 
-5. `print(f" Площадь треугольника из минимальных элементов: {area_min:.2f}")
-print(f" Площадь треугольника из максимальных элементов: {area_max:.2f}")`: Выводим площадь двух треугольников.
+5. `print("Input file contains:")
+print(f"{num_letters} letters")
+print(f"{num_words} words")
+print(f"{num_lines} lines") `: Выводим результаты.
 
 ## Самостоятельная работа №4
-### ⦁	Никто не любит получать плохие оценки, поэтому Борис решил это исправить. Допустим, что все оценки студента за семестр хранятся в одном списке. Ваша задача удалить из этого списка все двойки, а все тройки заменить на четверки. Списки оценок (проверить работу программы на всех трех вариантах): [2, 3, 4, 5, 3, 4, 5, 2, 2, 5, 3, 4, 3, 5, 4] [4, 2, 3, 5, 3, 5, 4, 2, 2, 5, 4, 3, 5, 3, 4] [5, 4, 3, 3, 4, 3, 3, 5, 5, 3, 3, 3, 3, 4, 4] Результатом выполнения задачи будет: листинг кода, и вывод в консоль, в котором будут три обновленных массива.
+### ⦁	Напишите программу, которая получает на вход предложение, выводит его в терминал, заменяя все запрещенные слова звездочками * (количество звездочек равно количеству букв в слове). Запрещенные слова, разделенные символом пробела, хранятся в текстовом файле input.txt. Все слова в этом файле записаны в нижнем регистре. Программа должна заменить запрещенные слова, где бы они ни встречались, даже в середине другого слова. Замена производится независимо от регистра: если файл input.txt содержит запрещенное слово exam, то слова exam, Exam, ExaM, EXAM и exAm должны быть заменены на ****. Запрещенные слова: hello email python the exam wor is Предложение для проверки: Hello, world! Python IS the programming language of thE future. My EMAIL is.... PYTHON is awesome!!!! Ожидаемый результат:*****, ***ld! ****** ** *** programming language of *** future. My***** **....****** ** awesome!!!!
 
 
 ```python
-def fix_grades(grades):
-    fixed_grades = []
-    for grade in grades:
-        if grade == 2:
+def load_forbidden_words(filename):
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            content = file.read().strip()
+            return content.split()
+    except FileNotFoundError:
+        return ["hello", "email", "python", "the", "exam", "wor", "is"]
+
+
+def censor_text(text, forbidden_words):
+    result = text
+
+    for word in forbidden_words:
+        if not word:
             continue
-        elif grade == 3:
-            fixed_grades.append(4)ф
-        else:
-            fixed_grades.append(grade)
-    return fixed_grades
 
-grades_list1 = [2, 3, 4, 5, 3, 4, 5, 2, 2, 5, 3, 4, 3, 5, 4]
-grades_list2 = [4, 2, 3, 5, 3, 5, 4, 2, 2, 5, 4, 3, 5, 3, 4]
-grades_list3 = [5, 4, 3, 3, 4, 3, 3, 5, 5, 3, 3, 3, 3, 4, 4]
+        start = 0
+        while True:
+            index = result.lower().find(word.lower(), start)
+            if index == -1:
+                break
 
-result1 = fix_grades(grades_list1)
-result2 = fix_grades(grades_list2)
-result3 = fix_grades(grades_list3)
+            stars = '*' * len(result[index:index + len(word)])
+            result = result[:index] + stars + result[index + len(word):]
+            start = index + len(stars)
 
-print(result1)
-print(result2)
-print(result3)   
+    return result
+
+
+forbidden_words = ["hello", "email", "python", "the", "exam", "wor", "is"]
+test_text = """Hello, world! Python IS the programming language of thE future. My EMAIL is....
+PYTHON is awesome!!!!"""
+
+print("Исходный текст:")
+print(test_text)
+print("\nРезультат:")
+print(censor_text(test_text, forbidden_words))  
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Solo54.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Solo4.png)
 
 ## Выводы
 
-В данном коде на вход программы принимаются три списка:
+В данном коде идет работа с текстовым файлом:
 
-1. `grades_list1 = [2, 3, 4, 5, 3, 4, 5, 2, 2, 5, 3, 4, 3, 5, 4]
-grades_list2 = [4, 2, 3, 5, 3, 5, 4, 2, 2, 5, 4, 3, 5, 3, 4]
-grades_list3 = [5, 4, 3, 3, 4, 3, 3, 5, 5, 3, 3, 3, 3, 4, 4]`: Списки оценок.
+1. `def load_forbidden_words(filename):
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            content = file.read().strip()
+            return content.split()
+    except FileNotFoundError:
+        return ["hello", "email", "python", "the", "exam", "wor", "is"]`: Функция для загрузки запрещенных слов.
 
-2. `def fix_grades(grades):
-    fixed_grades = []
-    for grade in grades:
-        if grade == 2:
+2. `def censor_text(text, forbidden_words):
+    result = text
+
+    for word in forbidden_words:
+        if not word:
             continue
-        elif grade == 3:
-            fixed_grades.append(4)ф
-        else:
-            fixed_grades.append(grade)
-    return fixed_grades`: Удаляем двойки. Заменяем тройки на четверки
 
-3.  `result1 = fix_grades(grades_list1)
-result2 = fix_grades(grades_list2)
-result3 = fix_grades(grades_list3)
+        start = 0
+        while True:
+            index = result.lower().find(word.lower(), start)
+            if index == -1:
+                break`: Функция для замены запрещенных слов на звездочки.
 
-print(result1)
-print(result2)
-print(result3) `: Выводим исправленные списки.
+3.  `forbidden_words = ["hello", "email", "python", "the", "exam", "wor", "is"]
+test_text = """Hello, world! Python IS the programming language of thE future. My EMAIL is....
+PYTHON is awesome!!!!"""`: Текстовые данные.
+
+4.  `print("Исходный текст:")
+print(test_text)
+print("\nРезультат:")
+print(censor_text(test_text, forbidden_words)) `: Вывод исходного текста и результата.
   
 ## Самостоятельная работа №5
-### ⦁	Вам предоставлены списки натуральных чисел, из них необходимо сформировать множества. При этом следует соблюдать это правило: если какое-либо число повторяется, то преобразовать его в строку по следующему образцу: например, если число 4 повторяется 3 раза, то в множестве будет следующая запись: само число 4, строка «44», строка «444». Множества для теста: list_1 = [1, 1, 3, 3, 1] list_2 = [5, 5, 5, 5, 5, 5, 5] list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2] Результаты вывода (порядок может отличаться, поскольку мы работаем с set()): {'11', 1, 3, '33', '111'} {5, '5555', '555555', '55555', '555', '55', '5555555'} {'11', 1, 3, 2, 5, 6, '222222', '222', 7, '2222', '22222', '22'}
+### ⦁	Самостоятельно придумайте и решите задачу, которая будет взаимодействовать с текстовым файлом.
 
 
 ```python
-def transform_numbers(numbers):
-    result_set = set()
+import random
 
-    from collections import Counter
-    count = Counter(numbers)
-    for num, freq in count.items():
-        result_set.add(num)
-        for i in range(2, freq + 1):
-            result_set.add(str(num) * i)
-    return result_set
 
-list_1 = [1, 1, 3, 3, 1]
-list_2 = [5, 5, 5, 5, 5, 5, 5]
-list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2]
+def get_quote_of_the_day():
+    try:
+        with open("Solo75.txt", "r", encoding="utf-8") as file:
+            quotes = file.readlines()
 
-result_1 = transform_numbers(list_1)
-result_2 = transform_numbers(list_2)
-result_3 = transform_numbers(list_3)
+        if quotes:
+            quote_line = random.choice(quotes).strip()
+            quote, author = quote_line.split("|")
+            print(f"«{quote}»")
+            print(f"— {author}")
+        else:
+            print("Цитаты не найдены!")
 
-print(result_1)
-print(result_2)
-print(result_3) 
+    except FileNotFoundError:
+        print("Создайте файл Solo75.txt с цитатами!")
+
+
+def add_quote_simple():
+    quote = input("Цитата: ")
+    author = input("Автор: ")
+
+    with open("Solo75.txt", "a", encoding="utf-8") as file:
+        file.write(f"{quote}|{author}\n")
+    print("Цитата сохранена!")
+
+print("1 - Получить цитату дня")
+print("2 - Добавить цитату")
+choice = input("Выберите: ")
+
+if choice == "1":
+    get_quote_of_the_day()
+elif choice == "2":
+    add_quote_simple()
 ```
 ### Результат.
-![Меню](https://github.com/Freeman-glitch/software-engineering/blob/main/pic/Solo55.png)
+![Меню](https://github.com/Freeman-glitch/software-engineering/blob/tem_7.md/pic/Solo5.png)
 
 ## Выводы
 
 В данном коде на вход программы принимаются три списка натуральных чисел:
 
-1. `list_1 = [1, 1, 3, 3, 1]
-list_2 = [5, 5, 5, 5, 5, 5, 5]
-list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2]`: Списки натуральных чисел.
+1. `def get_quote_of_the_day():
+    try:
+        with open("Solo75.txt", "r", encoding="utf-8") as file:
+            quotes = file.readlines()
 
-2. `def transform_numbers(numbers):
-    result_set = set()`: Создается пустое множество для результатов.
+        if quotes:
+            quote_line = random.choice(quotes).strip()
+            quote, author = quote_line.split("|")
+            print(f"«{quote}»")
+            print(f"— {author}")
+        else:
+            print("Цитаты не найдены!")
 
-3.  `from collections import Counter
-    count = Counter(numbers)
-    for num, freq in count.items():`: Подсчитывает частоту для каждого числа.
+    except FileNotFoundError:
+        print("Создайте файл Solo75.txt с цитатами!")`: Функция для получения случайной цитаты из файла.
 
-4. `for i in range(2, freq + 1):
-            result_set.add(str(num) * i)
-   return result_set`: Для каждого числа добавляется само число и все возможные строковые комбинации от 2 до N повторений, где N - количество вхождений числа в исходном списке.
+2. `def add_quote_simple():
+    quote = input("Цитата: ")
+    author = input("Автор: ")
 
-5. result_1 = transform_numbers(list_1)
-result_2 = transform_numbers(list_2)
-result_3 = transform_numbers(list_3)
+    with open("Solo75.txt", "a", encoding="utf-8") as file:
+        file.write(f"{quote}|{author}\n")
+    print("Цитата сохранена!")`: Функция для добавления новой цитаты.
 
-print(result_1)
-print(result_2)
-print(result_3) `: Выводим результат.
-    
+3.  `print("1 - Получить цитату дня")
+print("2 - Добавить цитату")
+choice = input("Выберите: ")`: Выводится меню выбора для пользователя.
+4. `if choice == "1":
+    get_quote_of_the_day()
+elif choice == "2":
+    add_quote_simple()`: Обработка выбора пользователя.
   
 ## Общие выводы по теме
-Списки в Python широко используются для хранения и управления коллекциями элементов. Они обладают гибкостью и позволяют изменять содержимое списка в процессе выполнения программы. Списки позволяют выполнять различные операции, такие как добавление, удаление, изменение, доступ к элементам и другие.
-Множества в Python обладают высокой эффективностью благодаря использованию хэш-таблиц. Они позволяют эффективно выполнять операции добавления, удаления и проверки наличия элементов, а также операции над множествами. Кроме того, множества обеспечивают уникальность элементов, что может быть полезно во многих задачах программирования.
+Работа с текстовыми файлами в Python предоставляет возможность чтения данных из файла, записи данных в файл, а также обработки содержимого файла. Вот основные операции работы с текстовыми файлами: открытие, чтение, запись, добавление в файл, закрытие файла.
